@@ -40,11 +40,11 @@ python manage.py makemigrations
 ```
 python manage.py migrate
 ```
-8. Provide Initial Website data:
+7. Provide Initial Website data:
 ```
 python manage.py loaddata websites.json
 ```
-9. Run the project server:
+8. Run the project server:
 ```
 python manage.py runserver 0:<any port you want to use>
 [by default port is 8000]
