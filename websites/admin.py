@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Websites
+from .models import Website, User
 
 # Register your models here.
 
@@ -16,4 +16,16 @@ class WebsiteAdmin(admin.ModelAdmin):
     search_fields = ['category']
 
     class Meta:
-        model = Websites
+        model = Website
+
+
+class UserAdmin(admin.ModelAdmin):
+
+    list_display = [
+        'name',
+    ]
+    list_filter = ['name']
+    search_fields = ['name']
+
+    class Meta:
+        model = User
