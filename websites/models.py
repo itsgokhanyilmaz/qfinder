@@ -9,8 +9,8 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = "category"
-        verbose_name_plural = "categories"
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
         ordering = ["created_at"]
 
     def __str__(self):
@@ -23,8 +23,8 @@ class Website(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = "website"
-        verbose_name_plural = "websites"
+        verbose_name = "Website"
+        verbose_name_plural = "Websites"
         ordering = ["created_at"]
 
     def __str__(self):
@@ -35,8 +35,21 @@ class User(models.Model):
     name = models.CharField(max_length=150, blank=True, null=True)
 
     class Meta:
-        verbose_name = "user"
-        verbose_name_plural = "users"
+        verbose_name = "User"
+        verbose_name_plural = "Users"
 
     def __str__(self):
         return self.name
+
+
+class CheckingResult(models.Model):
+    name = models.CharField(max_length=100)
+    url = models.CharField(max_length=150)
+    is_available = models.BooleanField(blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Check Result"
+        verbose_name_plural = "Check Results"
+
+    def __str__(self):
+        return self.name + self.url
