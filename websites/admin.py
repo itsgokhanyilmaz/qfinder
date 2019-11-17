@@ -1,7 +1,20 @@
 from django.contrib import admin
-from .models import Website, User
+from .models import Website, User, Category
 
 # Register your models here.
+
+class CategoryAdmin(admin.ModelAdmin):
+
+    list_display = [
+        'name',
+        'created_at',
+    ]
+
+    list_filter = ['created_at']
+    search_fields = ['name']
+
+    class Meta:
+        model = Category
 
 
 class WebsiteAdmin(admin.ModelAdmin):
@@ -13,7 +26,7 @@ class WebsiteAdmin(admin.ModelAdmin):
     ]
 
     list_filter = ['created_at']
-    search_fields = ['category']
+    search_fields = ['url', 'category']
 
     class Meta:
         model = Website
@@ -29,3 +42,7 @@ class UserAdmin(admin.ModelAdmin):
 
     class Meta:
         model = User
+
+admin.site.register(User, UserAdmin)
+admin.site.register(Website, WebsiteAdmin)
+admin.site.register(Category, CategoryAdmin)

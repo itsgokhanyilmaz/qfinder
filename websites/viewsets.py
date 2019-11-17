@@ -4,13 +4,18 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from .models import Website, User
-from .serializers import WebsiteSerializer, UserSerializer
+from .models import Website, User, Category
+from .serializers import WebsiteSerializer, UserSerializer, CategorySerializer
 
 import requests
 from utils import exceptions
 import django_filters
 from django_filters import rest_framework as filters
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
 class WebsiteViewSet(viewsets.ModelViewSet):

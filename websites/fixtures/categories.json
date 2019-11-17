@@ -1,0 +1,106 @@
+[
+{
+  "model": "websites.category",
+  "pk": 1,
+  "fields": {
+    "name": "Social Network",
+    "created_at": "2019-11-17T19:36:28.653Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 2,
+  "fields": {
+    "name": "Video Streaming",
+    "created_at": "2019-11-17T19:36:42.560Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 3,
+  "fields": {
+    "name": "Publishing",
+    "created_at": "2019-11-17T19:36:50.000Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 4,
+  "fields": {
+    "name": "Software",
+    "created_at": "2019-11-17T19:37:02.467Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 5,
+  "fields": {
+    "name": "Travel",
+    "created_at": "2019-11-17T19:40:19.814Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 6,
+  "fields": {
+    "name": "Social Cataloging",
+    "created_at": "2019-11-17T19:41:05.595Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 7,
+  "fields": {
+    "name": "Personal Web Hosting",
+    "created_at": "2019-11-17T19:41:43.954Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 8,
+  "fields": {
+    "name": "Education",
+    "created_at": "2019-11-17T19:42:14.449Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 9,
+  "fields": {
+    "name": "Video Streaming",
+    "created_at": "2019-11-17T19:43:26.196Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 10,
+  "fields": {
+    "name": "Question and Answer Website",
+    "created_at": "2019-11-17T19:43:50.007Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 11,
+  "fields": {
+    "name": "Music",
+    "created_at": "2019-11-17T19:44:25.202Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 12,
+  "fields": {
+    "name": "Academic",
+    "created_at": "2019-11-17T19:45:06.327Z"
+  }
+},
+{
+  "model": "websites.category",
+  "pk": 13,
+  "fields": {
+    "name": "e-Commerce",
+    "created_at": "2019-11-17T19:45:58.788Z"
+  }
+}
+]

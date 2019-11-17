@@ -42,6 +42,7 @@ python manage.py migrate
 ```
 7. Provide Initial Website data:
 ```
+python manage.py loaddata categories.json
 python manage.py loaddata websites.json
 ```
 8. Run the project server:

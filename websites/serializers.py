@@ -1,9 +1,16 @@
 from rest_framework import serializers
+from .models import Website, User, Category
 
-from .models import Website, User
+
+class CategorySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        fields = ('id', 'name', 'created_at')
+        model = Category
+
 
 class WebsiteSerializer(serializers.ModelSerializer):
-    
+    category = CategorySerializer()
     class Meta:
         fields = ('id', 'url', 'category', 'created_at')
         model = Website
