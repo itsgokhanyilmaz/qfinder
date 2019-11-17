@@ -4,7 +4,12 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from .models import Website, User, Category
+from .models import (
+    Website, 
+    User, 
+    Category,
+    CheckingResult,
+)
 from .serializers import WebsiteSerializer, UserSerializer, CategorySerializer
 
 import requests
@@ -49,15 +54,17 @@ class  UserViewSet(viewsets.ModelViewSet):
         username = serializer.validated_data["name"]
         result = []
         queryset = Website.objects.all().values()
-
+        
         for q in queryset:
             try:
                 r = requests.get(q["url"]+"/{}".format(username))
                 if r.status_code == 200:
-                    print(q["url"]+"{} --> ".format(username) + "Found!")
+                    print("OK {}".format(q["url"]))
+                    CheckingResult.objects.create(name=username, url=q["url"], is_available=False)
                 else:
+                    print("NOK {}".format(q["url"]))
                     result.append(q["url"])
-                    print(q["url"]+"{} --> ".format(username) + "Not Found!")
+                    CheckingResult.objects.create(name=username, url=q["url"], is_available=True)
             except:
                 exceptions.url_not_found_error()
         if len(result) > 0:

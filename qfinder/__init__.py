@@ -1,5 +1,5 @@
 ##################################################
-## {Description}
+## {Helps you to find avaliable usernames}
 ##################################################
 ## Author: gokhanyilmaz
 ## Project: QFinder
@@ -12,5 +12,5 @@ print("""
 | |   | | | |___ | || |    | |||  | || |___ | |
 | | _ | | | |--- | || |    | |||__| || |___ | |
 |______\ \|_|    |_||_|    |_||____ /|_|___||_|
-        \ \             v1.0 - Author: @gokhanyilmaz
+        \ \            v1.0 - Author: @gokhanyilmaz
 """)
