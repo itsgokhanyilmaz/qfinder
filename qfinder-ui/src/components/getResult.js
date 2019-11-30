@@ -34,7 +34,7 @@ class GetResult extends Component{
         super(props)
 
         this.state ={
-            categories: [],
+            results: [],
         };
 
     }
@@ -44,23 +44,23 @@ class GetResult extends Component{
             .then( res => {
                 const categories = res.data;
                 this.setState({
-                    categories:categories
+                    results:results
                 });
             })
         
-        console.log(this.state.categories)
+        console.log(this.state.results)
     }
 
     render(){
-        const categories = this.state.categories;
+        const results = this.state.results;
         const cardList = [];
 
-        for(let i=0; i< categories.length; i++){
+        for(let i=0; i< results.length; i++){
             cardList.push(
                 <Row gutter={16} style={{ background: "#833ab4;", background:"-webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4)", background:"linear-gradient(to right, #fcb045, #fd1d1d, #833ab4)" }}>
                     <Col className="gutter-row" span={2} >
                         <div className="gutter-box">
-                            <Card title={categories[i].name} style={{ width: 200 }}>
+                            <Card title={results[i].name} style={{ width: 200 }}>
                             <p>Card content</p>
                             </Card>
                         </div>
@@ -71,7 +71,7 @@ class GetResult extends Component{
 
         return(
             <div>
-                <Table columns={columns} dataSource={this.state.categories}></Table>
+                <Table columns={columns} dataSource={this.state.results}></Table>
             </div>
         )
     }
