@@ -10,7 +10,7 @@ from .models import (
     Category,
     CheckingResult,
 )
-from .serializers import WebsiteSerializer, UserSerializer, CategorySerializer
+from .serializers import WebsiteSerializer, UserSerializer, CategorySerializer, CheckingResultSerializer
 
 import requests
 from utils import exceptions
@@ -71,3 +71,21 @@ class  UserViewSet(viewsets.ModelViewSet):
             serializer.save()
         else:
             raise ValueError("Avaliable user {} not found!".format(username))
+
+
+class CheckingResultFilter(filters.FilterSet):
+    name = filters.CharFilter(field_name="name", lookup_expr='gte')
+    
+    class Meta:
+        model = CheckingResult
+        fields = ['name']
+
+
+class CheckingResultViewSet(viewsets.ModelViewSet):
+
+    queryset = CheckingResult.objects.all()
+    serializer_class = CheckingResultSerializer
+    lookup_field = 'id'
+
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = CheckingResultFilter

@@ -2,18 +2,17 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import "antd/dist/antd.css";
-import GetCategory from './components/getCategory';
+import GetCategory from './components/getResult';
 import { Layout, Input, Row, Col } from 'antd';
-import Sider from 'antd/lib/layout/Sider';
 
-const { Header, Footer, Content } = Layout;
+const { Header, Footer, Content, Sider } = Layout;
 const { Search } = Input;
 
 function App() {
   return (
     <div className="App">
       <Layout>
-        <Header>
+        <Header style={{ background: "#833ab4;", background:"-webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4)", background:"linear-gradient(to right, #fcb045, #fd1d1d, #833ab4)"}}>
           <Search
             placeholder="input search text"
             onSearch={value => console.log(value)}
@@ -21,16 +20,9 @@ function App() {
           />
         </Header>
         <Content>
-          <Row gutter={[8, 8]}>
-            <Col span={8} >
-              <GetCategory></GetCategory>
-            </Col>
-            <Col span={16} >
-              
-            </Col>
-          </Row>
+          <GetCategory></GetCategory>
         </Content>
-        <Footer style={{ background: "#001529"}}>
+        <Footer style={{ background: "#833ab4;", background:"-webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4)", background:"linear-gradient(to right, #fcb045, #fd1d1d, #833ab4)"}}>
           Footer
         </Footer>
       </Layout>
