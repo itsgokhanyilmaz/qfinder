@@ -85,7 +85,6 @@ class CheckingResultViewSet(viewsets.ModelViewSet):
 
     queryset = CheckingResult.objects.all()
     serializer_class = CheckingResultSerializer
-    lookup_field = 'id'
 
-    filter_backends = (filters.DjangoFilterBackend,)
-    filterset_class = CheckingResultFilter
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ['name']

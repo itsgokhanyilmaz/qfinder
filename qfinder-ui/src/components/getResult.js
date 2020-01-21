@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Select, Card, List, Table, Divider, Tag, Row, Col } from 'antd';
-import "antd/dist/antd.css";
+import { Card, Table, Tag, Row, Col } from 'antd';
 
+import "antd/dist/antd.css";
+import { Layout, Input } from 'antd';
 import axios from 'axios';
-const { option } = Select;
+
+const { Header } = Layout;
+const { Search } = Input;
 
   const columns = [
     {
@@ -18,14 +21,10 @@ const { option } = Select;
       key: 'url',
     },
     {
-      title: 'Available',
+      title: 'Is available?',
       key: 'is_available',
       dataIndex: 'is_available',
       render: text => text === false ? <Tag color="volcano">NO</Tag> : <Tag color="green">YES</Tag>
-    },
-    {
-      title: 'Action',
-      key: 'action',
     },
   ];
 
@@ -35,43 +34,57 @@ class GetResult extends Component{
 
         this.state ={
             results: [],
+            loading: false,
         };
 
     }
 
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/api/results/')
-            .then( res => {
-                const categories = res.data;
-                this.setState({
-                    results:results
-                });
-            })
+
+    }
+
+    getSearchResult(username){
+        axios({
+            method : 'get',
+            url: `http://127.0.0.1:8000/api/results/?name=${username}`
+        }).then(obj => {
+            this.setState({
+                results: obj.data,
+                loading: false
+            });
+        })
+    }
+
+    searchUsername(username){
+        this.setState({
+            loading: true
+        })
+        axios({
+            method : 'post',
+            url: 'http://127.0.0.1:8000/api/users/', 
+            data: {
+                name: username,    
+            }
+        }).then(obj => {
+           console.log(obj.data)
+           this.getSearchResult(username) 
+        })
         
-        console.log(this.state.results)
     }
 
     render(){
-        const results = this.state.results;
-        const cardList = [];
-
-        for(let i=0; i< results.length; i++){
-            cardList.push(
-                <Row gutter={16} style={{ background: "#833ab4;", background:"-webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4)", background:"linear-gradient(to right, #fcb045, #fd1d1d, #833ab4)" }}>
-                    <Col className="gutter-row" span={2} >
-                        <div className="gutter-box">
-                            <Card title={results[i].name} style={{ width: 200 }}>
-                            <p>Card content</p>
-                            </Card>
-                        </div>
-                    </Col>
-                </Row>
-            )
-        }
 
         return(
             <div>
-                <Table columns={columns} dataSource={this.state.results}></Table>
+                <Header>
+                    <Search
+                        placeholder="input search text"
+                        onSearch={value => this.searchUsername(value)}
+                        style={{ width: 500 }}
+                        disabled={this.state.loading}
+                    />
+                </Header>
+                <Table size="small" columns={columns} dataSource={this.state.results}></Table>
             </div>
         )
     }
