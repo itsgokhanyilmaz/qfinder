@@ -54,7 +54,3 @@ python manage.py runserver 0:<any port you want to use>
 ## Authors
 * **Gokhan YILMAZ** [profile](https://github.com/GokhanYilmaz44)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
