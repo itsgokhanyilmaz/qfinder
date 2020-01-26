@@ -4,15 +4,15 @@ import "antd/dist/antd.css";
 import GetCategory from './components/getResult';
 import { Layout, Input } from 'antd';
 
-const { Footer, Content } = Layout;
+const { Header, Footer, Sider, Content } = Layout;
 
 function App() {
   return (
     <div className="App">
       <Layout>
-        <Content>
+        <Layout>
           <GetCategory></GetCategory>
-        </Content>
+        </Layout>
       </Layout>
     </div>
   );

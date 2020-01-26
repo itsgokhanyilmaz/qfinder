@@ -49,25 +49,22 @@ class  UserViewSet(viewsets.ModelViewSet):
 
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = UserFilter
+    # pagination_class = PageNumberPagination
 
     def perform_create(self, serializer):
         username = serializer.validated_data["name"]
-        result = []
+        bulk_objects = []
         queryset = Website.objects.all().values()
         
         for q in queryset:
             try:
                 r = requests.get(q["url"]+"/{}".format(username))
-                if r.status_code == 200:
-                    print("OK {}".format(q["url"]))
-                    CheckingResult.objects.create(name=username, url=q["url"], is_available=False)
-                else:
-                    print("NOK {}".format(q["url"]))
-                    result.append(q["url"])
-                    CheckingResult.objects.create(name=username, url=q["url"], is_available=True)
+                if r.status_code != 200:
+                    bulk_objects.append(CheckingResult(name=username, url=q["url"], is_available=True))
             except:
                 exceptions.url_not_found_error()
-        if len(result) > 0:
+        CheckingResult.objects.bulk_create(bulk_objects)
+        if len(bulk_objects) > 0:
             serializer.save()
         else:
             raise ValueError("Avaliable user {} not found!".format(username))
