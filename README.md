@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/GokhanYilmaz44/qfinder.svg?branch=master)](https://travis-ci.org/GokhanYilmaz44/qfinder)
+
 # qfinder
 Helps you find available username
 
