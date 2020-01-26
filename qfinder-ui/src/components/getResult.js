@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, Table, Tag, Row, Col } from 'antd';
 
 import "antd/dist/antd.css";
-import { Layout, Input } from 'antd';
+import { Layout, Input, message} from 'antd';
 import axios from 'axios';
 
 const { Header } = Layout;
@@ -59,6 +59,7 @@ class GetResult extends Component{
         this.setState({
             loading: true
         })
+        const hide = message.loading('Username is searching...', 0);
         axios({
             method : 'post',
             url: 'http://127.0.0.1:8000/api/users/', 
@@ -66,7 +67,7 @@ class GetResult extends Component{
                 name: username,    
             }
         }).then(obj => {
-           console.log(obj.data)
+           setTimeout(hide)
            this.getSearchResult(username) 
         })
         
