@@ -54,5 +54,5 @@ python manage.py runserver 0:<any port you want to use>
 ```
 
 ## Authors
-* **Gokhan YILMAZ** [profile](https://github.com/GokhanYilmaz44)
+* **Gokhan YILMAZ** [profile](https://github.com/itsgokhanyilmaz)
 
